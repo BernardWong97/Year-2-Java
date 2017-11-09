@@ -15,7 +15,15 @@ public final class PermanentEmployee extends Employee {
 	// Override abstract methods
 	@Override
 	public double calculateSalary() {
-		return hourlyRate * normalNumOfHours;
+		
+		// calculate weekly salary
+		weeklySalary = hourlyRate * normalNumOfHours;
+		
+		if(overtime > 0) {
+			weeklySalary += (overtime * hourlyRate * 2);
+		}// if overtime, hourly rate doubled
+		
+		return weeklySalary;
 	} // calculateSalary
 
 	@Override
@@ -26,11 +34,4 @@ public final class PermanentEmployee extends Employee {
 		System.out.println("Permanent Employee weekly salary: " + calculateSalary());
 	} // display()
 
-	public static void main(String[] args) {
-		// create test object
-		PermanentEmployee joe = new PermanentEmployee("003", "Joe", 10.00F, 20);
-		joe.display();
-
-	} // main
-
-}
+} // class

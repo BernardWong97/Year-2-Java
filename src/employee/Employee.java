@@ -3,7 +3,7 @@ package employee;
 public abstract class Employee {
 	// Variables
 	String id, name;
-	float hourlyRate, normalNumOfHours = 37.5F;
+	float hourlyRate, normalNumOfHours = 37.5F, overtime, weeklySalary;
 	static float shareValue; // static variable
 	
 	// abstract methods
