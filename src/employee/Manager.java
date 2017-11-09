@@ -16,6 +16,7 @@ public class Manager extends Employee {
 	public Manager(String id, String name, float hourlyRate, float bonus, float overtime) {
 		this(id, name, hourlyRate, bonus);
 		this.overtime = overtime;
+		setShareValue(40.00F);
 	}
 	
 	// Get/Set Methods
