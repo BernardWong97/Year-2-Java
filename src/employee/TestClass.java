@@ -16,6 +16,9 @@ public class TestClass {
 		jill.setManagerBonus(1000);
 		jill.display();
 		
+		// polymorphism
+		Employee managerCarl = new Manager("002", "Carl", 500, 100);
+		managerCarl.display();
 	} // main
 
 } // class
