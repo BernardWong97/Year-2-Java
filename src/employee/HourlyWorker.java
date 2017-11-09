@@ -50,5 +50,27 @@ public class HourlyWorker extends Employee implements UnionMember{
 	public float calculateFee() {
 		return hourlyRate * .05F;
 	} // calculateFee()
+	
+	// override equals method
+	@Override
+	public boolean equals(Object obj){
+		HourlyWorker other = (HourlyWorker)obj;
+		if(other.id==id 
+				&& other.name==name 
+				&& other.numHolidays==numHolidays
+				&& other.name==name
+				&& other.overtime==overtime
+				)
+			return true;
+		else
+			return false;
+	} // equals()
+	
+	public static void main(String[] args) {
+		// compare 2 objects
+		HourlyWorker myHusbandsAccount = new HourlyWorker("007", "Alex", 10.00F, 10);
+		HourlyWorker myWifesAccount = new HourlyWorker("007", "Alex", 10.00F, 10);
+		System.out.println(myHusbandsAccount.equals(myWifesAccount));
+	} // main
 
 } // class

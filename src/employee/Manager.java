@@ -51,5 +51,16 @@ public class Manager extends Employee {
 		System.out.println("Share Value: " + String.format("%.2f", shareValue));
 		System.out.println("=======================================================================");
 	} // display()
+	
+	public static void main(String[] args) {
+		// set share value
+		setShareValue(40.00F);
+		
+		// share same share value because of static
+		Manager jack = new Manager("005", "Jack", 10.00F, 1000);
+		Manager sean = new Manager("006", "Sean", 20.00F, 1000);
+		jack.display();
+		sean.display();
+	} // main
 
 } // class
