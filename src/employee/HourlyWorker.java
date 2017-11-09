@@ -1,21 +1,24 @@
 package employee;
 
-public final class PermanentEmployee extends Employee {
+public class HourlyWorker extends Employee {
 	// Variables
 	int numHolidays;
+	String managerName;
 
 	// Constructors
-	public PermanentEmployee(String id, String name, float hourlyRate, int numHolidays) {
+	public HourlyWorker(String id, String name, float hourlyRate, int numHolidays) {
 		this.id = id;
 		this.name = name;
 		this.hourlyRate = hourlyRate;
 		this.numHolidays = numHolidays;
 	}
 	
-	public PermanentEmployee(String id, String name, float hourlyRate, int numHolidays, float overtime) {
+	public HourlyWorker(String id, String name, float hourlyRate, int numHolidays, String managerName, float overtime) {
 		this(id, name, hourlyRate, numHolidays);
 		this.overtime = overtime;
+		this.managerName = managerName;
 	}
+	
 
 	// Override abstract methods
 	@Override
@@ -33,11 +36,12 @@ public final class PermanentEmployee extends Employee {
 
 	@Override
 	public void display() {
-		System.out.println("Permanent Employee ID: " + id);
-		System.out.println("Permanent Employee name: " + name);
-		System.out.println("Permanent Employee number of holidays: " + numHolidays);
-		System.out.println("Permanent Employee weekly salary: " + String.format("%.2f", calculateSalary()));
+		System.out.println("Hourly Worker ID: " + id);
+		System.out.println("Hourly Worker name: " + name);
+		System.out.println("Hourly Worker number of holidays: " + numHolidays);
+		System.out.println("Hourly Worker weekly salary: " + String.format("%.2f", calculateSalary()));
+		System.out.println("Hourly Worker manager name: " + managerName);
 		System.out.println("=======================================================================");
 	} // display()
 
-} // class
+}
