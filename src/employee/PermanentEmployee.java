@@ -19,7 +19,11 @@ public final class PermanentEmployee extends Employee {
 
 	// Override abstract methods
 	@Override
-	public double calculateSalary() {
+	public double calculateSalary() throws SalaryException {
+		// Throw exception
+		if(normalNumOfHours + overtime > 100) {
+			throw new SalaryException("The number of hours worked has exceeded 100 hours");
+		} // if throw exception
 		
 		// calculate weekly salary
 		weeklySalary = hourlyRate * normalNumOfHours;
@@ -36,7 +40,11 @@ public final class PermanentEmployee extends Employee {
 		System.out.println("Permanent Employee ID: " + id);
 		System.out.println("Permanent Employee name: " + name);
 		System.out.println("Permanent Employee number of holidays: " + numHolidays);
-		System.out.println("Permanent Employee weekly salary: " + String.format("%.2f", calculateSalary()));
+		try {
+			System.out.println("Permanent Employee salary for the week: " + String.format("%.2f", calculateSalary()));
+		} catch (SalaryException e) {
+			System.out.println(e.getMessage());
+		} // try catch exception
 		System.out.println("=======================================================================");
 	} // display()
 

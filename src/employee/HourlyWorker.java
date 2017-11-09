@@ -22,7 +22,11 @@ public class HourlyWorker extends Employee implements UnionMember{
 
 	// Override abstract methods
 	@Override
-	public double calculateSalary() {
+	public double calculateSalary() throws SalaryException {
+		// Throw exception
+		if(normalNumOfHours + overtime > 100) {
+			throw new SalaryException("The number of hours worked has exceeded 100 hours");
+		} // if throw exception
 		
 		// calculate weekly salary
 		weeklySalary = hourlyRate * normalNumOfHours;
@@ -39,9 +43,13 @@ public class HourlyWorker extends Employee implements UnionMember{
 		System.out.println("Hourly Worker ID: " + id);
 		System.out.println("Hourly Worker name: " + name);
 		System.out.println("Hourly Worker number of holidays: " + numHolidays);
-		System.out.println("Hourly Worker weekly salary: " + String.format("%.2f", calculateSalary()));
-		System.out.println("Hourly Worker manager name: " + managerName);
-		System.out.println("Hourly Worker fee: " + String.format("%.2f", calculateFee()));
+		try {
+			System.out.println("Hourly Worker salary for the week: " + String.format("%.2f", calculateSalary()));
+			System.out.println("Hourly Worker manager name: " + managerName);
+			System.out.println("Hourly Worker fee: " + String.format("%.2f", calculateFee()));
+		} catch (SalaryException e) {
+			System.out.println(e.getMessage());
+		} // try catch exception
 		System.out.println("=======================================================================");
 	} // display()
 

@@ -7,7 +7,7 @@ public abstract class Employee {
 	static float shareValue; // static variable
 	
 	// abstract methods
-	public abstract double calculateSalary();
+	public abstract double calculateSalary() throws SalaryException;
 	public abstract void display();
 	
 	// static methods

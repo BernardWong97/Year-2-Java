@@ -30,7 +30,12 @@ public class Manager extends Employee {
 
 	// override calculate salary method
 	@Override
-	public double calculateSalary() {
+	public double calculateSalary()  throws SalaryException {
+		// Throw exception
+		if(normalNumOfHours + overtime > 100) {
+			throw new SalaryException("The number of hours worked has exceeded 100 hours");
+		} // if throw exception
+		
 		//calculate weekly salary
 		weeklySalary = hourlyRate * normalNumOfHours;
 		
@@ -46,9 +51,14 @@ public class Manager extends Employee {
 	public void display() {
 		System.out.println("Manager ID: " + id);
 		System.out.println("Manager name: " + name);
-		System.out.println("Manager salary for the week: " + String.format("%.2f", calculateSalary()));
-		System.out.println("Manager bonus: " + String.format("%.2f", managerBonus));
-		System.out.println("Share Value: " + String.format("%.2f", shareValue));
+		try {
+			calculateSalary();
+			System.out.println("Manager salary for the week: " + String.format("%.2f", calculateSalary()));
+			System.out.println("Manager bonus: " + String.format("%.2f", managerBonus));
+			System.out.println("Share Value: " + String.format("%.2f", shareValue));
+		} catch (SalaryException e) {
+			System.out.println(e.getMessage());
+		} // try catch exception
 		System.out.println("=======================================================================");
 	} // display()
 	
