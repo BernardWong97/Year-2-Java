@@ -1,6 +1,6 @@
 package employee;
 
-public class HourlyWorker extends Employee {
+public class HourlyWorker extends Employee implements UnionMember{
 	// Variables
 	int numHolidays;
 	String managerName;
@@ -41,7 +41,14 @@ public class HourlyWorker extends Employee {
 		System.out.println("Hourly Worker number of holidays: " + numHolidays);
 		System.out.println("Hourly Worker weekly salary: " + String.format("%.2f", calculateSalary()));
 		System.out.println("Hourly Worker manager name: " + managerName);
+		System.out.println("Hourly Worker fee: " + String.format("%.2f", calculateFee()));
 		System.out.println("=======================================================================");
 	} // display()
 
-}
+	// implement interface method
+	@Override
+	public float calculateFee() {
+		return hourlyRate * .05F;
+	} // calculateFee()
+
+} // class
